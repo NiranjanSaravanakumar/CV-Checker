@@ -1,0 +1,241 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─────────────────────────────────────────
+   Base resets & global styles
+───────────────────────────────────────── */
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #0D0D0D;
+    color: #e2e8f0;
+    font-family: 'Inter', system-ui, sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar            { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track      { background: #0D0D0D; }
+  ::-webkit-scrollbar-thumb      { background: #F97316; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover{ background: #FB923C; }
+
+  ::selection { background: rgba(249,115,22,0.35); color: #fff; }
+}
+
+/* ─────────────────────────────────────────
+   Reusable component classes
+───────────────────────────────────────── */
+@layer components {
+
+  /* Glassmorphism card */
+  .glass-card {
+    background: rgba(20, 20, 20, 0.80);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(249, 115, 22, 0.15);
+    border-radius: 16px;
+  }
+
+  .glass-card-light {
+    background: rgba(28, 28, 28, 0.85);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(38, 38, 38, 0.9);
+    border-radius: 12px;
+  }
+
+  /* Gradient accent text — orange → amber */
+  .text-gradient {
+    background: linear-gradient(135deg, #F97316 0%, #FBBF24 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Warm red-orange — used for "roast" emphasis */
+  .text-gradient-warm {
+    background: linear-gradient(135deg, #EF4444 0%, #F97316 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Glowing primary button */
+  .btn-glow {
+    background: linear-gradient(135deg, #F97316 0%, #FBBF24 100%);
+    box-shadow: 0 0 22px rgba(249, 115, 22, 0.50);
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+  }
+  .btn-glow:hover {
+    box-shadow: 0 0 50px rgba(249, 115, 22, 0.80);
+    transform: translateY(-2px);
+  }
+  .btn-glow:active {
+    transform: translateY(0);
+  }
+
+  /* Outlined secondary button */
+  .btn-outline {
+    border: 1px solid rgba(249, 115, 22, 0.45);
+    background: transparent;
+    transition: border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+  }
+  .btn-outline:hover {
+    border-color: #F97316;
+    background: rgba(249, 115, 22, 0.10);
+    box-shadow: 0 0 20px rgba(249, 115, 22, 0.22);
+  }
+
+  /* Subtle dot-grid background */
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(249,115,22,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(249,115,22,0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  /* Skeleton shimmer */
+  .skeleton {
+    background: linear-gradient(
+      90deg,
+      rgba(38,38,38,0.8) 25%,
+      rgba(50,50,50,0.9) 50%,
+      rgba(38,38,38,0.8) 75%
+    );
+    background-size: 1000px 100%;
+    animation: shimmer 1.8s infinite linear;
+  }
+
+  /* Score badge */
+  .score-ring {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    background: conic-gradient(
+      #F97316 var(--pct, 0deg),
+      rgba(38,38,38,0.9) 0deg
+    );
+  }
+}
+
+/* ─────────────────────────────────────────
+   Utility overrides
+───────────────────────────────────────── */
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar                     { -ms-overflow-style: none; scrollbar-width: none; }
+}
+
+/* ─────────────────────────────────────────
+   Reusable component classes
+───────────────────────────────────────── */
+@layer components {
+
+  /* Glassmorphism card */
+  .glass-card {
+    background: rgba(18, 18, 26, 0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(124, 58, 237, 0.18);
+    border-radius: 16px;
+  }
+
+  .glass-card-light {
+    background: rgba(26, 26, 38, 0.8);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(30, 30, 46, 0.9);
+    border-radius: 12px;
+  }
+
+  /* Gradient accent text */
+  .text-gradient {
+    background: linear-gradient(135deg, #7C3AED 0%, #06B6D4 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-warm {
+    background: linear-gradient(135deg, #F59E0B 0%, #EF4444 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Glowing primary button */
+  .btn-glow {
+    background: linear-gradient(135deg, #7C3AED 0%, #06B6D4 100%);
+    box-shadow: 0 0 20px rgba(124, 58, 237, 0.45);
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+  }
+  .btn-glow:hover {
+    box-shadow: 0 0 45px rgba(124, 58, 237, 0.75);
+    transform: translateY(-2px);
+  }
+  .btn-glow:active {
+    transform: translateY(0);
+  }
+
+  /* Outlined secondary button */
+  .btn-outline {
+    border: 1px solid rgba(124, 58, 237, 0.5);
+    background: transparent;
+    transition: border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+  }
+  .btn-outline:hover {
+    border-color: #7C3AED;
+    background: rgba(124, 58, 237, 0.12);
+    box-shadow: 0 0 20px rgba(124, 58, 237, 0.25);
+  }
+
+  /* Dot-grid / scan-line background */
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(124,58,237,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(124,58,237,0.06) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  /* Skeleton shimmer */
+  .skeleton {
+    background: linear-gradient(
+      90deg,
+      rgba(30,30,46,0.8) 25%,
+      rgba(46,46,66,0.9) 50%,
+      rgba(30,30,46,0.8) 75%
+    );
+    background-size: 1000px 100%;
+    animation: shimmer 1.8s infinite linear;
+  }
+
+  /* Score badge */
+  .score-ring {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    background: conic-gradient(
+      #7C3AED var(--pct, 0deg),
+      rgba(30,30,46,0.9) 0deg
+    );
+  }
+}
+
+/* ─────────────────────────────────────────
+   Utility overrides
+───────────────────────────────────────── */
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar                     { -ms-overflow-style: none; scrollbar-width: none; }
+}

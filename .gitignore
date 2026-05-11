@@ -1,0 +1,67 @@
+# ── Python / Backend ─────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environment
+backend/venv/
+backend/.venv/
+venv/
+.venv/
+
+# Flask / SQLite database
+backend/resumes.db
+backend/*.db
+backend/instance/
+
+# Environment variables — NEVER commit secrets
+backend/.env
+.env
+.env.local
+.env.*.local
+
+# Uploaded files (temp storage)
+backend/uploads/
+
+# ── Node / Frontend ───────────────────────────────────────────
+node_modules/
+frontend/node_modules/
+
+# Vite build output
+frontend/dist/
+frontend/.vite/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+
+# ── OS & Editor ───────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+.vscode/
+.idea/
+*.suo
+*.user
+*.swp
+*.swo
+*~
+
+# ── Misc ──────────────────────────────────────────────────────
+*.bak
+*.tmp
+coverage/
+.coverage
+.pytest_cache/
+htmlcov/
