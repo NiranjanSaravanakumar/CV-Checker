@@ -2,16 +2,17 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import toast from 'react-hot-toast'
+import { FileText, Briefcase, Target, Lock, CheckCircle2 } from 'lucide-react'
 
 import ResumeDropzone from '../components/ResumeDropzone'
 import LoadingScreen  from '../components/LoadingScreen'
 import { uploadResume, analyzeResume } from '../utils/api'
 
 const TIPS = [
-  '💡 Make sure your resume is text-based, not a scanned image.',
-  '💡 PDF works best for most ATS systems.',
-  '💡 Remove password protection before uploading.',
-  '💡 Keep your resume to 1–2 pages for best results.',
+  'Ensure your resume is text-based, not a scanned image.',
+  'PDF format works best with most ATS systems.',
+  'Remove password protection before uploading.',
+  'Keep your resume to 1–2 pages for optimal results.',
 ]
 
 const JD_PLACEHOLDER = `Paste the job description here (optional but highly recommended).
@@ -79,7 +80,7 @@ export default function UploadPage() {
             <span className="text-gradient">Resume Reality Check</span>
           </h1>
           <p className="text-slate-500 text-base">
-            Upload your resume — add a job description for targeted insights. 🎯
+            Upload your resume — add a job description for targeted insights.
           </p>
         </motion.div>
 
@@ -94,7 +95,9 @@ export default function UploadPage() {
             className="glass-card p-8 flex flex-col"
           >
             <div className="flex items-center gap-2 mb-5">
-              <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center text-lg">📄</div>
+              <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center">
+                <FileText className="w-4 h-4 text-primary" />
+              </div>
               <div>
                 <h2 className="text-white font-bold text-base">Resume</h2>
                 <p className="text-slate-500 text-xs">PDF, DOCX, or TXT · max 10 MB</p>
@@ -115,7 +118,9 @@ export default function UploadPage() {
           >
             <div className="flex items-center justify-between mb-5">
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-lg bg-secondary/20 flex items-center justify-center text-lg">💼</div>
+                <div className="w-8 h-8 rounded-lg bg-secondary/20 flex items-center justify-center">
+                  <Briefcase className="w-4 h-4 text-secondary" />
+                </div>
                 <div>
                   <h2 className="text-white font-bold text-base">Job Description</h2>
                   <p className="text-slate-500 text-xs">Optional — enables targeted gap analysis</p>
@@ -142,7 +147,7 @@ export default function UploadPage() {
                 animate={{ opacity: 1, y: 0 }}
                 className="mt-3 flex items-start gap-2 p-3 rounded-lg bg-secondary/10 border border-secondary/20"
               >
-                <span className="text-secondary text-sm mt-0.5">✓</span>
+                <CheckCircle2 className="w-4 h-4 text-secondary mt-0.5 flex-shrink-0" />
                 <p className="text-xs text-slate-400">
                   JD detected — the AI will match your resume against this role, flag missing keywords, and tailor interview questions.
                 </p>
@@ -177,8 +182,8 @@ export default function UploadPage() {
           >
             {file
               ? jd.trim()
-                ? '🎯 Analyse Against This JD'
-                : '🎯 Analyse My Resume'
+                ? <><Target className="w-5 h-5 inline-block mr-2" />Analyse Against This JD</>
+                : <><Target className="w-5 h-5 inline-block mr-2" />Analyse My Resume</>
               : 'Select a resume file to continue'}
           </motion.button>
         </motion.div>
@@ -211,17 +216,18 @@ export default function UploadPage() {
               How JD Matching Works
             </h3>
             <ul className="space-y-2">
-              <li className="text-sm text-slate-500">🎯 Compares your skills against role requirements</li>
-              <li className="text-sm text-slate-500">🔑 Finds missing ATS keywords from the JD</li>
-              <li className="text-sm text-slate-500">❓ Generates role-specific interview questions</li>
-              <li className="text-sm text-slate-500">📊 Re-weights ATS score for the target role</li>
+              <li className="text-sm text-slate-500 flex items-start gap-2"><Target className="w-3.5 h-3.5 text-primary mt-0.5 flex-shrink-0" />Compares your skills against role requirements</li>
+              <li className="text-sm text-slate-500 flex items-start gap-2"><Target className="w-3.5 h-3.5 text-primary mt-0.5 flex-shrink-0" />Finds missing ATS keywords from the JD</li>
+              <li className="text-sm text-slate-500 flex items-start gap-2"><Target className="w-3.5 h-3.5 text-primary mt-0.5 flex-shrink-0" />Generates role-specific interview questions</li>
+              <li className="text-sm text-slate-500 flex items-start gap-2"><Target className="w-3.5 h-3.5 text-primary mt-0.5 flex-shrink-0" />Re-weights ATS score for the target role</li>
             </ul>
           </motion.div>
         </div>
 
         {/* Privacy notice */}
-        <p className="text-center text-xs text-slate-700 mt-6">
-          🔒 Your resume and job description are never stored permanently. Files are deleted immediately after text extraction.
+        <p className="text-center text-xs text-slate-700 mt-6 flex items-center justify-center gap-1.5">
+          <Lock className="w-3 h-3" />
+          Your resume and job description are never stored permanently. Files are deleted immediately after text extraction.
         </p>
       </div>
     </div>

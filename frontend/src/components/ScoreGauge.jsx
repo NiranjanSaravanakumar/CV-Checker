@@ -25,7 +25,7 @@ export default function ScoreGauge({ score = 0, size = 160 }) {
           {/* Track */}
           <circle
             cx={size / 2} cy={size / 2} r={radius}
-            fill="none" stroke="rgba(30,30,46,1)" strokeWidth={12}
+            fill="none" stroke="rgb(var(--t-border))" strokeWidth={12}
           />
           {/* Progress */}
           <motion.circle

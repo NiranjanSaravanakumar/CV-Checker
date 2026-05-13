@@ -1,6 +1,7 @@
 import { useCallback, useState } from 'react'
 import { useDropzone } from 'react-dropzone'
 import { motion, AnimatePresence } from 'framer-motion'
+import { FileText, UploadCloud } from 'lucide-react'
 
 const ACCEPTED_TYPES = {
   'application/pdf':                                              ['.pdf'],
@@ -94,13 +95,16 @@ export default function ResumeDropzone({ onFileAccepted }) {
               <motion.div
                 animate={isDragActive ? { scale: 1.2, rotate: [0, -5, 5, 0] } : { scale: 1 }}
                 transition={{ duration: 0.4 }}
-                className="text-6xl"
+                className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center"
               >
-                {isDragActive ? '🎯' : '📄'}
+                {isDragActive
+                  ? <UploadCloud className="w-8 h-8 text-primary" />
+                  : <FileText className="w-8 h-8 text-primary/70" />
+                }
               </motion.div>
               <div>
                 <p className="text-lg font-semibold text-white">
-                  {isDragActive ? 'Drop it like it\'s hot 🔥' : 'Drop your resume here'}
+                  {isDragActive ? 'Release to upload' : 'Drop your resume here'}
                 </p>
                 <p className="text-slate-500 text-sm mt-1">
                   or <span className="text-primary font-medium">click to browse</span>

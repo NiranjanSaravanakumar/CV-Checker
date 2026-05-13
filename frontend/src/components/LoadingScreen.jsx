@@ -1,19 +1,20 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { Cpu } from 'lucide-react'
 
 const AI_MESSAGES = [
-  '🔍 Scanning for buzzwords and corporate fluff…',
-  '🤖 Detecting AI-generated content…',
-  '📊 Calculating ATS compatibility score…',
-  '💼 Evaluating recruiter first impression…',
-  '🎯 Identifying skill gaps…',
-  '🔬 Analysing project depth and authenticity…',
-  '📝 Generating improved bullet points…',
-  '🧠 Crafting interview questions…',
-  '⚡ Checking for overused GitHub projects…',
-  '🏆 Building top-1% improvement roadmap…',
-  '🔥 Preparing the roast…',
-  '✨ Almost done — polishing the reality check…',
+  'Scanning for buzzwords and corporate filler…',
+  'Detecting AI-generated content…',
+  'Calculating ATS compatibility score…',
+  'Evaluating recruiter first impression…',
+  'Identifying skill gaps…',
+  'Analysing project depth and authenticity…',
+  'Generating improved bullet points…',
+  'Crafting tailored interview questions…',
+  'Checking for overused project templates…',
+  'Building your personalised improvement plan…',
+  'Running final quality checks…',
+  'Finalising your reality check report…',
 ]
 
 export default function LoadingScreen({ message = 'Analysing your resume…' }) {
@@ -57,7 +58,9 @@ export default function LoadingScreen({ message = 'Analysing your resume…' }) 
             className="absolute inset-2 rounded-full border-4 border-transparent border-t-secondary animate-spin"
             style={{ animationDuration: '1.5s', animationDirection: 'reverse' }}
           />
-          <div className="absolute inset-0 flex items-center justify-center text-3xl">🔥</div>
+          <div className="absolute inset-0 flex items-center justify-center">
+            <Cpu className="w-7 h-7 text-primary" />
+          </div>
         </div>
 
         {/* Headline */}

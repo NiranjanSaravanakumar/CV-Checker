@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { Target } from 'lucide-react'
 
 export default function Footer() {
   return (
@@ -8,7 +9,9 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-3">
-              <span className="text-2xl">🎯</span>
+              <div className="w-8 h-8 rounded-lg bg-primary/15 flex items-center justify-center">
+                <Target className="w-4 h-4 text-primary" />
+              </div>
               <span className="font-bold text-base">
                 <span className="text-gradient">Resume</span>
                 <span className="text-white"> Reality Check</span>
@@ -67,7 +70,7 @@ export default function Footer() {
             © {new Date().getFullYear()} Resume Reality Check. Built for job seekers.
           </p>
           <p className="text-slate-600 text-xs">
-            For educational use only. Roast responsibly. 🔥
+            For educational use only. Not a substitute for professional career advice.
           </p>
         </div>
       </div>

@@ -42,26 +42,27 @@ export default function ResumeRadarChart({ radarData }) {
   return (
     <div className="w-full h-80">
       <ResponsiveContainer width="100%" height="100%">
-        <RadarChart data={chartData} margin={{ top: 10, right: 30, bottom: 10, left: 30 }}>
-          <PolarGrid stroke="rgba(124,58,237,0.2)" />
+        <RadarChart data={chartData} margin={{ top: 20, right: 50, bottom: 20, left: 50 }}>
+          <PolarGrid stroke="rgba(178, 74, 253, 0.35)" strokeWidth={1} />
           <PolarAngleAxis
             dataKey="subject"
-            tick={{ fill: '#94a3b8', fontSize: 11, fontFamily: 'Inter' }}
+            tick={{ fill: '#e2e8f0', fontSize: 13, fontFamily: 'Inter', fontWeight: 600 }}
           />
           <PolarRadiusAxis
             angle={30}
             domain={[0, 100]}
-            tick={{ fill: '#475569', fontSize: 10 }}
+            tick={{ fill: '#94a3b8', fontSize: 11, fontWeight: 500 }}
             tickCount={5}
+            stroke="rgba(124,58,237,0.3)"
           />
           <Radar
             name="Resume"
             dataKey="value"
-            stroke="#7C3AED"
+            stroke="#a855f7"
             fill="#7C3AED"
-            fillOpacity={0.25}
-            strokeWidth={2}
-            dot={{ fill: '#7C3AED', r: 4 }}
+            fillOpacity={0.45}
+            strokeWidth={2.5}
+            dot={{ fill: '#a855f7', r: 5, strokeWidth: 2, stroke: '#fff' }}
           />
           <Tooltip content={<CustomTooltip />} />
         </RadarChart>

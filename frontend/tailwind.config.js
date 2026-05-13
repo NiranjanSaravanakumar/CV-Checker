@@ -1,20 +1,22 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: 'class',
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       colors: {
-        primary:      '#F97316',   // orange — fire / energy
+        primary:         '#F97316',
         'primary-light': '#FB923C',
-        secondary:    '#FBBF24',   // amber — flame tips
-        accent:       '#EF4444',   // red — danger / emphasis
-        danger:       '#EF4444',
-        success:      '#22C55E',
-        dark:         '#0D0D0D',
-        'dark-card':  '#141414',
-        'dark-card2': '#1C1C1C',
-        'dark-border':'#262626',
-        'dark-muted': '#2A2A2A',
+        secondary:       '#FBBF24',
+        accent:          '#EF4444',
+        danger:          '#EF4444',
+        success:         '#22C55E',
+        // These map to CSS variables — both light & dark mode auto-switch
+        dark:            'rgb(var(--t-bg) / <alpha-value>)',
+        'dark-card':     'rgb(var(--t-card) / <alpha-value>)',
+        'dark-card2':    'rgb(var(--t-card2) / <alpha-value>)',
+        'dark-border':   'rgb(var(--t-border) / <alpha-value>)',
+        'dark-muted':    'rgb(var(--t-muted) / <alpha-value>)',
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],

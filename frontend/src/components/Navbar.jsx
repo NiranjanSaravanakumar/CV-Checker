@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
+import { Sun, Moon, Target } from 'lucide-react'
+import { useTheme } from '../contexts/ThemeContext'
 
 const navLinks = [
   { label: 'Home',    to: '/' },
@@ -10,9 +12,10 @@ const navLinks = [
 ]
 
 export default function Navbar() {
-  const [scrolled,     setScrolled]     = useState(false)
-  const [mobileOpen,   setMobileOpen]   = useState(false)
+  const [scrolled,   setScrolled]   = useState(false)
+  const [mobileOpen, setMobileOpen] = useState(false)
   const location = useLocation()
+  const { dark, toggle } = useTheme()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
@@ -20,14 +23,13 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  // Close mobile menu on route change
   useEffect(() => { setMobileOpen(false) }, [location.pathname])
 
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-dark-card/90 backdrop-blur-xl border-b border-dark-border shadow-lg shadow-black/30'
+          ? 'scrolled-nav bg-dark-card/90 backdrop-blur-xl border-b border-dark-border shadow-sm'
           : 'bg-transparent'
       }`}
     >
@@ -35,7 +37,9 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 group">
-            <span className="text-2xl">🎯</span>
+            <div className="w-8 h-8 rounded-lg bg-primary/15 flex items-center justify-center">
+              <Target className="w-4 h-4 text-primary" />
+            </div>
             <span className="font-bold text-lg">
               <span className="text-gradient">Resume</span>
               <span className="text-white"> Reality Check</span>
@@ -50,8 +54,8 @@ export default function Navbar() {
                 to={link.to}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                   location.pathname === link.to
-                    ? 'text-white bg-primary/15 border border-primary/35'
-                    : 'text-slate-400 hover:text-white hover:bg-white/5'
+                    ? 'text-primary bg-primary/10 border border-primary/30'
+                    : 'text-slate-500 hover:text-slate-900 dark:hover:text-white hover:bg-dark-card2'
                 }`}
               >
                 {link.label}
@@ -59,32 +63,33 @@ export default function Navbar() {
             ))}
           </nav>
 
-          {/* CTA */}
-          <div className="hidden md:flex items-center gap-3">
-            <Link
-              to="/upload"
-              className="btn-glow px-5 py-2 rounded-lg text-sm font-semibold text-dark"
+          <div className="flex items-center gap-2">
+            {/* Theme toggle */}
+            <button
+              onClick={toggle}
+              className="p-2 rounded-lg text-slate-500 hover:text-primary hover:bg-primary/10 transition-all duration-200"
+              aria-label="Toggle theme"
             >
-              🎯 Analyse Now
-            </Link>
-          </div>
+              {dark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+            </button>
 
-          {/* Mobile hamburger */}
-          <button
-            className="md:hidden p-2 rounded-lg text-slate-400 hover:text-white hover:bg-white/5"
-            onClick={() => setMobileOpen((o) => !o)}
-            aria-label="Toggle menu"
-          >
-            {mobileOpen ? (
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            ) : (
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            )}
-          </button>
+            {/* Mobile hamburger */}
+            <button
+              className="md:hidden p-2 rounded-lg text-slate-500 hover:text-slate-900 dark:hover:text-white hover:bg-dark-card2 transition-all"
+              onClick={() => setMobileOpen((o) => !o)}
+              aria-label="Toggle menu"
+            >
+              {mobileOpen ? (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              )}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -104,8 +109,8 @@ export default function Navbar() {
                   to={link.to}
                   className={`px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
                     location.pathname === link.to
-                      ? 'text-white bg-primary/20'
-                      : 'text-slate-400 hover:text-white hover:bg-white/5'
+                      ? 'text-primary bg-primary/10'
+                      : 'text-slate-500 hover:text-slate-900 dark:hover:text-white hover:bg-dark-card2'
                   }`}
                 >
                   {link.label}
@@ -115,7 +120,7 @@ export default function Navbar() {
                 to="/upload"
                 className="btn-glow mt-2 px-4 py-3 rounded-lg text-sm font-semibold text-white text-center"
               >
-                🔥 Get Roasted Free
+                Analyse My Resume
               </Link>
             </nav>
           </motion.div>
