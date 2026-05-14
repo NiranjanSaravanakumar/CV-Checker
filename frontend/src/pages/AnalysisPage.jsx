@@ -13,7 +13,7 @@ import SkillConfidence       from '../components/SkillConfidence'
 
 /* ── Tab definitions ───────────────────────────────────────── */
 const TABS = [
-  { id: 'roast',        label: '🔥 Roast',        },
+  { id: 'roast',        label: '🧭 Feedback',     },
   { id: 'ats',          label: '📊 ATS',           },
   { id: 'improvements', label: '✏️ Improve',       },
   { id: 'interview',    label: '🎯 Interview',     },
@@ -230,7 +230,7 @@ export default function AnalysisPage() {
             className="glass-card p-6 mb-8"
           >
             <h2 className="text-base font-semibold text-slate-300 mb-6 flex items-center gap-2">
-              📈 Resume Strength Radar
+              📈 CV Strength Radar
             </h2>
             <ResumeRadarChart radarData={analysis.resume_strength_radar} />
           </motion.div>
@@ -255,18 +255,18 @@ export default function AnalysisPage() {
 
         {/* ── Tab content ───────────────────────────────────────── */}
 
-        {/* ROAST TAB */}
+        {/* FEEDBACK TAB */}
         {activeTab === 'roast' && (
           <div className="space-y-6">
-            <AnalysisCard title="Resume Roast 🔥" icon="🔥" accentColor="red" delay={0}>
+            <AnalysisCard title="Constructive Feedback 🔍" icon="🔍" accentColor="red" delay={0}>
               <ListItems
                 items={analysis.roast}
-                icon="🔥"
+                icon="🔍"
                 iconClass="text-danger"
               />
             </AnalysisCard>
 
-            <AnalysisCard title="Buzzword Cemetery" icon="💀" accentColor="amber" delay={0.1}>
+            <AnalysisCard title="Overused Buzzwords" icon="🧹" accentColor="amber" delay={0.1}>
               {analysis.buzzwords?.length ? (
                 <div className="flex flex-wrap gap-2">
                   {analysis.buzzwords.map((w) => (
@@ -276,7 +276,7 @@ export default function AnalysisPage() {
               ) : <p className="text-slate-500 text-sm italic">No buzzwords found — impressive.</p>}
             </AnalysisCard>
 
-            <AnalysisCard title="Fake-Sounding Claims" icon="🚩" accentColor="red" delay={0.2}>
+            <AnalysisCard title="Claims to Clarify" icon="🚩" accentColor="red" delay={0.2}>
               <ListItems
                 items={analysis.fake_sounding_claims}
                 icon="🚩"
@@ -289,7 +289,7 @@ export default function AnalysisPage() {
                 <div className="flex flex-wrap gap-2">
                   {analysis.overused_github_projects.map((p) => <Tag key={p} text={p} color="amber" />)}
                 </div>
-                <p className="text-xs text-slate-600 mt-3">These projects appear on thousands of junior dev resumes. They add no differentiation.</p>
+                <p className="text-xs text-slate-600 mt-3">These projects are very common. Add unique features or domain context to stand out.</p>
               </AnalysisCard>
             )}
           </div>
@@ -369,11 +369,11 @@ export default function AnalysisPage() {
         {/* INSIGHTS TAB */}
         {activeTab === 'insights' && (
           <div className="space-y-6">
-            <AnalysisCard title="Reality Check 🪞" icon="🪞" accentColor="red" delay={0}>
+            <AnalysisCard title="Growth Checkpoint 🪞" icon="🪞" accentColor="red" delay={0}>
               <ListItems items={analysis.reality_check} icon="→" iconClass="text-danger" />
             </AnalysisCard>
 
-            <AnalysisCard title="How to Make This Resume Top 1% 🏆" icon="🏆" accentColor="amber" delay={0.1}>
+            <AnalysisCard title="How to Make This CV Top 1% 🏆" icon="🏆" accentColor="amber" delay={0.1}>
               <ListItems items={analysis.top_1_percent_advice} icon="★" iconClass="text-accent" />
             </AnalysisCard>
 
@@ -429,7 +429,7 @@ export default function AnalysisPage() {
             to="/upload"
             className="btn-glow inline-flex items-center gap-2 px-8 py-3 rounded-xl text-sm font-bold text-white"
           >
-            🔥 Analyse Another Resume
+            🚀 Analyse Another CV
           </Link>
         </motion.div>
       </div>

@@ -41,8 +41,8 @@ export default function Navbar() {
               <Target className="w-4 h-4 text-primary" />
             </div>
             <span className="font-bold text-lg">
-              <span className="text-gradient">Resume</span>
-              <span className="text-white"> Reality Check</span>
+              <span className="text-gradient">AI CV</span>
+              <span className="text-white"> Coach</span>
             </span>
           </Link>
 
@@ -120,7 +120,7 @@ export default function Navbar() {
                 to="/upload"
                 className="btn-glow mt-2 px-4 py-3 rounded-lg text-sm font-semibold text-white text-center"
               >
-                Analyse My Resume
+                Analyse My CV
               </Link>
             </nav>
           </motion.div>

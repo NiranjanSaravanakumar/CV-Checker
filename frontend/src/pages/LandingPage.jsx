@@ -9,24 +9,24 @@ import {
 
 /* ── Static data ─────────────────────────────────────────── */
 const FEATURES = [
-  { Icon: Flame,       title: 'In-Depth Critique',          desc: 'Unfiltered analysis of every weak line, vague claim, and filler buzzword — the same lens a senior recruiter uses.' },
-  { Icon: BarChart2,   title: 'ATS Score Analysis',         desc: 'Real ATS compatibility score with missing keywords, formatting fixes, and pass-rate probability for your target role.' },
-  { Icon: PenLine,     title: 'Improved Bullet Points',     desc: 'Every weak bullet rewritten with strong action verbs, quantified impact, and role-relevant specificity.' },
-  { Icon: Target,      title: 'Interview Preparation',      desc: 'Technical, behavioural, and project-based questions generated directly from your resume content.' },
-  { Icon: TrendingUp,  title: 'Strength Radar Chart',       desc: 'Visual breakdown of six resume dimensions — skills, experience, projects, clarity, impact, and ATS fit.' },
-  { Icon: Lightbulb,   title: 'Top-Tier Improvement Plan',  desc: 'Precise, actionable steps to move from average to shortlisted at competitive organisations.' },
-  { Icon: ScanSearch,  title: 'Reality Assessment',         desc: 'Honest evaluation of where your career positioning stands — no platitudes, no false encouragement.' },
-  { Icon: ShieldCheck, title: 'Authenticity Check',         desc: 'Detects copied content, overused project templates, and AI-generated filler that recruiters flag instantly.' },
-  { Icon: Layers,      title: 'Portfolio Recommendations',  desc: 'Tailored project ideas to address the specific gaps hiring managers notice in your domain.' },
+  { Icon: Flame,       title: 'Constructive Feedback',      desc: 'Clear review of weak lines, vague claims, and filler phrases with practical fixes you can apply immediately.' },
+  { Icon: BarChart2,   title: 'ATS Score Analysis',         desc: 'ATS compatibility score with missing keywords, formatting improvements, and role-focused recommendations.' },
+  { Icon: PenLine,     title: 'Improved Bullet Points',     desc: 'Weak bullets rewritten with action verbs, measurable impact, and stronger technical clarity.' },
+  { Icon: Target,      title: 'Interview Preparation',      desc: 'Technical, behavioral, and project questions generated from your CV to build confidence.' },
+  { Icon: TrendingUp,  title: 'Strength Radar Chart',       desc: 'Visual breakdown of six CV dimensions — skills, experience, projects, clarity, impact, and ATS fit.' },
+  { Icon: Lightbulb,   title: 'Improvement Roadmap',        desc: 'Actionable steps to move from current level to shortlist-ready with steady weekly progress.' },
+  { Icon: ScanSearch,  title: 'Growth Checkpoint',          desc: 'Honest positioning feedback that helps you focus effort on the highest-impact improvements.' },
+  { Icon: ShieldCheck, title: 'Authenticity Check',         desc: 'Detects copied content, overused templates, and generic AI filler so your profile stays authentic.' },
+  { Icon: Layers,      title: 'Portfolio Recommendations',  desc: 'Tailored project ideas to close skill gaps and help you stand out as a student builder.' },
 ]
 
 const STEPS = [
-  { n: '01', Icon: Upload, title: 'Upload Your Resume',   desc: 'Drag and drop a PDF, DOCX, or TXT file — up to 10 MB.' },
-  { n: '02', Icon: Cpu,    title: 'AI Analysis',          desc: 'Gemini AI examines every section with the rigour of an experienced recruiter.' },
+  { n: '01', Icon: Upload, title: 'Upload Your CV',       desc: 'Drag and drop a PDF, DOCX, or TXT file — up to 10 MB.' },
+  { n: '02', Icon: Cpu,    title: 'AI Analysis',          desc: 'An LLM examines every section with the rigour of an experienced recruiter.' },
   { n: '03', Icon: Zap,    title: 'Act on the Insights',  desc: 'Apply the targeted recommendations and improve your callback rate.' },
 ]
 
-const SAMPLE_ROAST = [
+const SAMPLE_FEEDBACK = [
   '"Led a team" — led how many people, for how long, toward what outcome? This phrase appears four times and communicates nothing.',
   'Your stated Python proficiency is contradicted by the absence of any Python project. Credentials require evidence.',
   'The skills section reads as a keyword inventory. Without context or demonstrated depth, it signals inexperience.',
@@ -35,7 +35,7 @@ const SAMPLE_ROAST = [
 ]
 
 const STATS = [
-  { value: '10K+',  label: 'Resumes Analysed' },
+  { value: '10K+',  label: 'CVs Analysed' },
   { value: '43pt',  label: 'Avg ATS Score Lift' },
   { value: '94%',   label: 'Users Found Issues' },
   { value: '< 60s', label: 'Analysis Time' },
@@ -119,9 +119,9 @@ export default function LandingPage() {
             transition={{ duration: 0.6 }}
             className="text-5xl sm:text-6xl lg:text-7xl font-black leading-tight mb-6"
           >
-            <span className="text-gradient">Resume Reality Check</span>
+            <span className="text-gradient">AI CV Coach</span>
             <br />
-            <span className="text-white text-4xl sm:text-5xl lg:text-6xl">Honest. Precise. Actionable.</span>
+            <span className="text-white text-4xl sm:text-5xl lg:text-6xl">for Students</span>
           </motion.h1>
 
           <motion.p
@@ -130,9 +130,9 @@ export default function LandingPage() {
             transition={{ duration: 0.6, delay: 0.15 }}
             className="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed"
           >
-            Upload your resume, paste a job description, and receive a{' '}
+            Upload your CV, paste a job description, and receive a{' '}
             <strong className="text-white">comprehensive AI-powered analysis</strong> — ATS score,
-            skill gaps, improved bullet points, and the precise reasons your applications are not converting.
+            skill gaps, improved bullet points, and a step-by-step path to stronger applications.
           </motion.p>
 
           {/* CTAs */}
@@ -147,7 +147,7 @@ export default function LandingPage() {
               className="btn-glow px-8 py-4 rounded-xl text-base font-bold text-dark inline-flex items-center gap-2"
             >
               <Target className="w-5 h-5" />
-              Get My Analysis — Free
+              Start My CV Review - Free
             </Link>
             <a
               href="#example"
@@ -180,10 +180,10 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-black mb-4">
-              Everything Your Resume <span className="text-gradient">Actually Needs</span>
+              Everything Your CV <span className="text-gradient">Actually Needs</span>
             </h2>
             <p className="text-slate-500 text-lg max-w-xl mx-auto">
-              Not another keyword tool. Real AI analysis that evaluates your resume like a senior recruiter.
+              Not just a keyword checker. Practical AI guidance that helps students improve with every iteration.
             </p>
           </div>
 
@@ -208,14 +208,14 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ── Example Roast ───────────────────────────────────────── */}
+      {/* ── Example Feedback ────────────────────────────────────── */}
       <section id="example" className="py-24 px-4 bg-dark-card2">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-black mb-4">
-              What a <span className="text-gradient-warm">Real Analysis</span> Looks Like
+              What a <span className="text-gradient-warm">Constructive Analysis</span> Looks Like
             </h2>
-            <p className="text-slate-500">Actual output from a real (anonymised) resume submission.</p>
+            <p className="text-slate-500">Actual output from a real (anonymised) CV submission.</p>
           </div>
 
           <div className="glass-card overflow-hidden">
@@ -228,7 +228,7 @@ export default function LandingPage() {
             </div>
 
             <div className="p-6 space-y-4">
-              {SAMPLE_ROAST.map((line, i) => (
+              {SAMPLE_FEEDBACK.map((line, i) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, x: -10 }}
@@ -251,7 +251,7 @@ export default function LandingPage() {
                 className="btn-glow flex items-center justify-center gap-2 w-full py-3 rounded-xl font-bold text-dark text-sm"
               >
                 <Target className="w-4 h-4" />
-                Analyse My Resume Now
+                Improve My CV Now
               </Link>
             </div>
           </div>
@@ -293,17 +293,17 @@ export default function LandingPage() {
         <div className="absolute inset-0 bg-gradient-to-r from-primary/8 via-transparent to-secondary/8 pointer-events-none" />
         <div className="relative max-w-2xl mx-auto text-center">
           <h2 className="text-4xl font-black mb-4">
-            Understand Exactly Why You&apos;re Not Getting Callbacks
+            Build a CV That Earns More Callbacks
           </h2>
           <p className="text-slate-400 text-lg mb-8">
-            Receive the objective analysis your network cannot provide. Free, instant, and grounded in data.
+            Get objective feedback your peers may miss. Fast, actionable, and designed for steady growth.
           </p>
           <Link
             to="/upload"
             className="btn-glow inline-flex items-center gap-3 px-10 py-4 rounded-xl text-lg font-bold text-dark animate-glow-pulse"
           >
             <Target className="w-5 h-5" />
-            Analyse My Resume &mdash; Free
+            Analyse My CV - Free
           </Link>
         </div>
       </section>

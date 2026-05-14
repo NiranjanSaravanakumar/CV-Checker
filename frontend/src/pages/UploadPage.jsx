@@ -9,10 +9,10 @@ import LoadingScreen  from '../components/LoadingScreen'
 import { uploadResume, analyzeResume } from '../utils/api'
 
 const TIPS = [
-  'Ensure your resume is text-based, not a scanned image.',
+  'Ensure your CV is text-based, not a scanned image.',
   'PDF format works best with most ATS systems.',
   'Remove password protection before uploading.',
-  'Keep your resume to 1–2 pages for optimal results.',
+  'Keep your CV to 1–2 pages for optimal results.',
 ]
 
 const JD_PLACEHOLDER = `Paste the job description here (optional but highly recommended).
@@ -31,20 +31,20 @@ export default function UploadPage() {
 
   const handleAnalyse = async () => {
     if (!file) {
-      toast.error('Please select a resume file first.')
+      toast.error('Please select a CV file first.')
       return
     }
 
     try {
       // Step 1: Upload & parse
       setStep('uploading')
-      setLoadMsg('Uploading and parsing your resume…')
+      setLoadMsg('Uploading and parsing your CV…')
       const uploadRes = await uploadResume(file)
       const { resume_text, filename } = uploadRes.data
 
       // Step 2: AI analyse (pass job description if provided)
       setStep('analysing')
-      setLoadMsg('Roasting your resume with Gemini AI…')
+      setLoadMsg('Reviewing your CV with the LLM…')
       const analyseRes = await analyzeResume(resume_text, filename, jd.trim())
       const { id, analysis } = analyseRes.data
 
@@ -54,7 +54,7 @@ export default function UploadPage() {
       setStep('idle')
       const msg =
         err.response?.data?.error ||
-        (err.code === 'ECONNABORTED' ? 'Request timed out. Gemini AI may be slow — please retry.' : err.message)
+        (err.code === 'ECONNABORTED' ? 'Request timed out. LLM response may be slow — please retry.' : err.message)
       toast.error(msg)
     }
   }
@@ -77,17 +77,17 @@ export default function UploadPage() {
           className="text-center mb-10"
         >
           <h1 className="text-4xl font-black text-white mb-3">
-            <span className="text-gradient">Resume Reality Check</span>
+            <span className="text-gradient">AI CV Coach</span>
           </h1>
           <p className="text-slate-500 text-base">
-            Upload your resume — add a job description for targeted insights.
+            Upload your CV and get practical feedback you can apply today.
           </p>
         </motion.div>
 
         {/* Two-column layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
 
-          {/* ── Left column: Resume Dropzone ── */}
+          {/* ── Left column: CV Dropzone ── */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -99,7 +99,7 @@ export default function UploadPage() {
                 <FileText className="w-4 h-4 text-primary" />
               </div>
               <div>
-                <h2 className="text-white font-bold text-base">Resume</h2>
+                <h2 className="text-white font-bold text-base">CV</h2>
                 <p className="text-slate-500 text-xs">PDF, DOCX, or TXT · max 10 MB</p>
               </div>
             </div>
@@ -149,7 +149,7 @@ export default function UploadPage() {
               >
                 <CheckCircle2 className="w-4 h-4 text-secondary mt-0.5 flex-shrink-0" />
                 <p className="text-xs text-slate-400">
-                  JD detected — the AI will match your resume against this role, flag missing keywords, and tailor interview questions.
+                  JD detected — the AI will match your CV against this role, flag missing keywords, and tailor interview questions.
                 </p>
               </motion.div>
             )}
@@ -183,8 +183,8 @@ export default function UploadPage() {
             {file
               ? jd.trim()
                 ? <><Target className="w-5 h-5 inline-block mr-2" />Analyse Against This JD</>
-                : <><Target className="w-5 h-5 inline-block mr-2" />Analyse My Resume</>
-              : 'Select a resume file to continue'}
+                : <><Target className="w-5 h-5 inline-block mr-2" />Analyse My CV</>
+              : 'Select a CV file to continue'}
           </motion.button>
         </motion.div>
 
@@ -227,7 +227,7 @@ export default function UploadPage() {
         {/* Privacy notice */}
         <p className="text-center text-xs text-slate-700 mt-6 flex items-center justify-center gap-1.5">
           <Lock className="w-3 h-3" />
-          Your resume and job description are never stored permanently. Files are deleted immediately after text extraction.
+          Your CV and job description are never stored permanently. Files are deleted immediately after text extraction.
         </p>
       </div>
     </div>

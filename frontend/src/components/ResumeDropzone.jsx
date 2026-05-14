@@ -104,7 +104,7 @@ export default function ResumeDropzone({ onFileAccepted }) {
               </motion.div>
               <div>
                 <p className="text-lg font-semibold text-white">
-                  {isDragActive ? 'Release to upload' : 'Drop your resume here'}
+                  {isDragActive ? 'Release to upload' : 'Drop your CV here'}
                 </p>
                 <p className="text-slate-500 text-sm mt-1">
                   or <span className="text-primary font-medium">click to browse</span>

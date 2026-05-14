@@ -94,9 +94,9 @@ export default function HistoryPage() {
           >
             <p className="text-5xl mb-4">📭</p>
             <h2 className="text-xl font-bold text-white mb-2">No Analyses Yet</h2>
-            <p className="text-slate-500 mb-6">Upload your first resume to get roasted.</p>
+            <p className="text-slate-500 mb-6">Upload your first CV and start improving step by step.</p>
             <Link to="/upload" className="btn-glow px-8 py-3 rounded-xl text-sm font-bold text-white">
-              🔥 Get Roasted
+              🚀 Start Review
             </Link>
           </motion.div>
         )}

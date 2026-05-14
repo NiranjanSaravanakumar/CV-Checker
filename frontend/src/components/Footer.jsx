@@ -13,13 +13,13 @@ export default function Footer() {
                 <Target className="w-4 h-4 text-primary" />
               </div>
               <span className="font-bold text-base">
-                <span className="text-gradient">Resume</span>
-                <span className="text-white"> Reality Check</span>
+                <span className="text-gradient">AI CV</span>
+                <span className="text-white"> Coach</span>
               </span>
             </div>
             <p className="text-slate-500 text-sm leading-relaxed">
-              Honest AI resume analysis. ATS scoring, skill gap detection,
-              improved bullet points, interview prep — all in one place.
+              Student-friendly AI CV guidance. ATS scoring, skill gap detection,
+              stronger bullet points, and interview prep in one place.
             </p>
           </div>
 
@@ -31,7 +31,7 @@ export default function Footer() {
             <ul className="space-y-2">
               {[
                 { label: 'Home',    to: '/' },
-                { label: 'Upload Resume', to: '/upload' },
+                { label: 'Upload CV', to: '/upload' },
                 { label: 'History', to: '/history' },
                 { label: 'About',   to: '/about' },
               ].map((l) => (
@@ -53,7 +53,7 @@ export default function Footer() {
               Powered By
             </h3>
             <div className="flex flex-wrap gap-2">
-              {['Gemini AI', 'React', 'Flask', 'Tailwind CSS', 'SQLite'].map((t) => (
+              {['LLM', 'React', 'Flask', 'Tailwind CSS', 'SQLite'].map((t) => (
                 <span
                   key={t}
                   className="px-2 py-1 bg-dark-card2 border border-dark-border rounded text-xs text-slate-400"
@@ -67,7 +67,7 @@ export default function Footer() {
 
         <div className="mt-8 pt-6 border-t border-dark-border flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-slate-600 text-xs">
-            © {new Date().getFullYear()} Resume Reality Check. Built for job seekers.
+            © {new Date().getFullYear()} AI CV Coach. Built for students and job seekers.
           </p>
           <p className="text-slate-600 text-xs">
             For educational use only. Not a substitute for professional career advice.

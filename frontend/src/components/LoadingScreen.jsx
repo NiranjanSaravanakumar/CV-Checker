@@ -14,10 +14,10 @@ const AI_MESSAGES = [
   'Checking for overused project templates…',
   'Building your personalised improvement plan…',
   'Running final quality checks…',
-  'Finalising your reality check report…',
+  'Finalising your CV growth report…',
 ]
 
-export default function LoadingScreen({ message = 'Analysing your resume…' }) {
+export default function LoadingScreen({ message = 'Analysing your CV…' }) {
   const [msgIndex,  setMsgIndex]  = useState(0)
   const [progress,  setProgress]  = useState(0)
 
@@ -65,7 +65,7 @@ export default function LoadingScreen({ message = 'Analysing your resume…' }) 
 
         {/* Headline */}
         <h2 className="text-2xl font-bold text-white mb-2">{message}</h2>
-        <p className="text-slate-500 text-sm mb-8 font-mono">Gemini AI is hard at work…</p>
+        <p className="text-slate-500 text-sm mb-8 font-mono">LLM is hard at work…</p>
 
         {/* AI message cycler */}
         <div className="glass-card px-6 py-4 mb-8 min-h-[60px] flex items-center justify-center">

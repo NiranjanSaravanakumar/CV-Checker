@@ -63,16 +63,32 @@ def analyze_with_gemini(resume_text: str, job_description: str = '') -> dict:
 
     logger.info("Sending resume to Gemini (%d chars)…", len(resume_text))
 
-    response = client.models.generate_content(
-        model=_MODEL_NAME,
-        contents=prompt,
-        config=types.GenerateContentConfig(
-            temperature=0.4,       # lower = more deterministic / less hallucination
-            top_p=0.90,
-            max_output_tokens=8192,
-            response_mime_type='application/json',  # forces valid JSON output
-        ),
-    )
+    try:
+        response = client.models.generate_content(
+            model=_MODEL_NAME,
+            contents=prompt,
+            config=types.GenerateContentConfig(
+                temperature=0.4,       # lower = more deterministic / less hallucination
+                top_p=0.90,
+                max_output_tokens=8192,
+                response_mime_type='application/json',  # forces valid JSON output
+            ),
+        )
+    except Exception as exc:
+        error_text = str(exc)
+        lowered = error_text.lower()
+
+        if 'permission_denied' in lowered or 'api key' in lowered or 'unauth' in lowered:
+            raise ValueError(
+                'Gemini API key is invalid, revoked, or blocked. '
+                'Create a new key in Google AI Studio and update backend/.env.'
+            ) from exc
+        if 'quota' in lowered or 'rate' in lowered or 'resource_exhausted' in lowered:
+            raise ValueError(
+                'Gemini API quota/rate limit reached. Please wait and retry.'
+            ) from exc
+
+        raise ValueError(f'Gemini request failed: {error_text}') from exc
 
     raw = response.text.strip()
     logger.debug("Raw Gemini response (first 300 chars): %s", raw[:300])
